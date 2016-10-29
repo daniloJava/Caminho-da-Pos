@@ -14,5 +14,16 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Study"/>
+	<classpathentry kind="lib" path="/home/tapower/Downloads/jersey-archive-1.19.1/lib/jsr311-api-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/tapower/Downloads/jersey-archive-1.19.1/lib/jettison-1.1.jar"/>
+	<classpathentry kind="lib" path="/home/tapower/Downloads/jersey-archive-1.19.1/lib/jersey-servlet-1.19.1.jar"/>
+	<classpathentry kind="lib" path="/home/tapower/Downloads/jersey-archive-1.19.1/lib/jersey-server-1.19.1.jar"/>
+	<classpathentry kind="lib" path="/home/tapower/Downloads/jersey-archive-1.19.1/lib/jersey-json-1.19.1.jar"/>
+	<classpathentry kind="lib" path="/home/tapower/Downloads/jersey-archive-1.19.1/lib/jersey-core-1.19.1.jar"/>
+	<classpathentry kind="lib" path="/home/tapower/Downloads/jersey-archive-1.19.1/lib/jersey-client-1.19.1.jar"/>
+	<classpathentry kind="lib" path="/home/tapower/Downloads/jersey-archive-1.19.1/lib/jackson-xc-1.9.2.jar"/>
+	<classpathentry kind="lib" path="/home/tapower/Downloads/jersey-archive-1.19.1/lib/jackson-mapper-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="/home/tapower/Downloads/jersey-archive-1.19.1/lib/jackson-jaxrs-1.9.2.jar"/>
+	<classpathentry kind="lib" path="/home/tapower/Downloads/jersey-archive-1.19.1/lib/jackson-core-asl-1.9.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
