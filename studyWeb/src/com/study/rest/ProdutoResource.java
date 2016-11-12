@@ -14,20 +14,15 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.study.dao.IClienteDao;
-import com.study.dao.jdbc.ClienteDao;
+import com.study.dao.IProdutoDao;
 import com.study.dao.jdbc.ConnectionFactory;
-import com.study.model.Cliente;
+import com.study.dao.jdbc.ProdutoDao;
+import com.study.model.Produto;
 
-/**Clase para colocar os metodos de acesso 
- * a classe cliente, onde o Rest entenda ond eprecis amapear
- * 
- * @author Danilo Silva
- *
- */
-@Path("/cliente")//Path de mapeamento pra que a servlet entenda.
-public class ClienteResource {
-	
+
+@Path("/produto")
+public class ProdutoResource {
+
 	/**Requisição via GEt somente
 	 * 
 	 * @return
@@ -35,18 +30,18 @@ public class ClienteResource {
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)//texto plano, nenhuma aplicação será executada.
-	public Cliente get(@PathParam("id") int id){
-		Cliente cliente = new Cliente();
+	public Produto get(@PathParam("id") int id){
+		Produto produto = new Produto();
 		try {
 			Connection conn = new ConnectionFactory().getConnection();
-			IClienteDao dao = new ClienteDao(conn);
-			cliente = dao.get(id);
-			System.out.println(cliente.getNome() + "Recuperado");
+			IProdutoDao dao = new ProdutoDao(conn);
+			produto = dao.get(id);
+			System.out.println(produto.getNomeProduto() + "Recuperado");
 		} catch (Exception e) {
 			System.out.println("Problemas para Inserir " + e.getMessage());
 		}
 		
-		return cliente;
+		return produto;
 	}
 	
 	/**Requisição do Post 
@@ -57,55 +52,55 @@ public class ClienteResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)//texto plano, nenhuma aplicação será executada.
-	public String POST(Cliente cliente){
+	public String POST(Produto produto){
 		try {
 			Connection conn = new ConnectionFactory().getConnection();
-			IClienteDao dao = new ClienteDao(conn);
-			dao.insert(cliente);
-			System.out.println(cliente.getNome() + "Inserido");
+			IProdutoDao dao = new ProdutoDao(conn);
+			dao.insert(produto);
+			System.out.println(produto.getNomeProduto() + "Inserido");
 
 		} catch (Exception e) {
 			System.out.println("Problemas para Inserir " + e.getMessage());
 		}
-		System.out.println(cliente.getNome());
+		System.out.println(produto.getNomeProduto());
 		return "1";
 	}
 	
 	/**Put para somente colocar um Update
 	 * 
-	 * @param cliente
+	 * @param produto
 	 * @return
 	 */
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)//texto plano, nenhuma aplicação será executada.
-	public Cliente PUT(Cliente cliente){
+	public Produto PUT(Produto produto){
 		try {
 			Connection conn = new ConnectionFactory().getConnection();
-			IClienteDao dao = new ClienteDao(conn);
-			dao.update(cliente);
-			System.out.println(cliente.getNome() + "Atualizado");
+			IProdutoDao dao = new ProdutoDao(conn);
+			dao.update(produto);
+			System.out.println(produto.getNomeProduto() + "Atualizado");
 
 		} catch (Exception e) {
 			System.out.println("Problemas para update " + e.getMessage());
 		}
-		return cliente;
+		return produto;
 	}
 	
 	/**Delete Usando um Objeto
 	 * 
-	 * @param cliente
+	 * @param produto
 	 * @return
 	 */
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)//texto plano, nenhuma aplicação será executada.
-	public String DELETE(Cliente cliente) {
+	public String DELETE(Produto produto) {
 		try {
 			Connection conn = new ConnectionFactory().getConnection();
-			IClienteDao dao = new ClienteDao(conn);
-			dao.delete(cliente);
-			System.out.println(cliente.getNome() + "DELETADO");
+			IProdutoDao dao = new ProdutoDao(conn);
+			dao.delete(produto);
+			System.out.println(produto.getNomeProduto() + "DELETADO");
 
 		} catch (Exception e) {
 			System.out.println("Problemas para deletar " + e.getMessage());
@@ -118,11 +113,11 @@ public class ClienteResource {
 	@GET
 	@Path("/all")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Cliente> list(){
-		List<Cliente> list = new ArrayList<Cliente>();
+	public List<Produto> list(){
+		List<Produto> list = new ArrayList<Produto>();
 		try{ 
 		Connection conn = new ConnectionFactory().getConnection();
-		IClienteDao dao = new ClienteDao(conn);
+		IProdutoDao dao = new ProdutoDao(conn);
 		list = dao.listAll();
 		
 		} catch (Exception e) {						
@@ -130,4 +125,5 @@ public class ClienteResource {
 		}
 		return list;
 	}
+	
 }
